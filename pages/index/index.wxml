@@ -1,0 +1,7 @@
+<!--index.wxml-->
+<navigation-bar title="首页" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <button class="nav-button" bindtap="navigateToGiScan">食物GI识别</button>
+  </view>
+</scroll-view>

@@ -1,0 +1,23 @@
+<navigation-bar title="GI 识别" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<view class="container">
+  <!-- 标题区域 -->
+  <view class="header">
+    <text class="title">拍照识别食物升糖指数</text>
+    <text class="subtitle">上传食物图片，快速获取GI值</text>
+  </view>
+
+  <!-- 上传区域 -->
+  <view class="upload-area" bindtap="chooseImage">
+    <view class="upload-content" wx:if="{{!tempImagePath}}">
+      <image class="upload-icon" src="/assets/icons/camera.png" mode="aspectFit"></image>
+      <text class="upload-text">点击拍照或上传图片</text>
+    </view>
+    <image wx:else class="preview-image" src="{{tempImagePath}}" mode="aspectFit"></image>
+  </view>
+
+  <!-- 提交按钮 -->
+  <button class="submit-btn" bindtap="submitImage" disabled="{{!tempImagePath}}">
+    开始识别
+  </button>
+</view> 
