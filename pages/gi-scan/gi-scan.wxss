@@ -92,4 +92,18 @@ page {
 .submit-btn[disabled] {
   background-color: #E0E0E0;
   color: #999999;
+}
+
+.result-area {
+  width: 100%;
+  padding: 24rpx;
+  background: #F8F8F8;
+  border-radius: 12rpx;
+  margin-top: 24rpx;
+}
+
+.result-text {
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 1.6;
 } 

@@ -16,8 +16,15 @@
     <image wx:else class="preview-image" src="{{tempImagePath}}" mode="aspectFit"></image>
   </view>
 
+  <!-- 识别结果展示 -->
+  <view class="result-area" wx:if="{{recognitionResult}}">
+    <text class="result-text">{{recognitionResult}}</text>
+  </view>
+
   <!-- 提交按钮 -->
-  <button class="submit-btn" bindtap="submitImage" disabled="{{!tempImagePath}}">
-    开始识别
+  <button class="submit-btn" 
+          bindtap="submitImage" 
+          disabled="{{!tempImagePath || isLoading}}">
+    {{isLoading ? '识别中...' : '开始识别'}}
   </button>
 </view> 
