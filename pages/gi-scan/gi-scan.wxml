@@ -27,4 +27,72 @@
           disabled="{{!tempImagePath || isLoading}}">
     {{isLoading ? '识别中...' : '开始识别'}}
   </button>
+
+  <!-- 添加模态框 -->
+  <view class="modal {{showModal ? 'show' : ''}}" catchtap="hideModal">
+    <view class="modal-mask"></view>
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">识别结果</text>
+        <view class="modal-close" catchtap="hideModal">×</view>
+      </view>
+
+      <!-- 添加标签页 -->
+      <view class="tabs">
+        <scroll-view scroll-x="true" class="tabs-scroll" catchtap="stopPropagation">
+          <view class="tabs-container">
+            <view 
+              wx:for="{{recognitionResult}}" 
+              wx:key="index"
+              class="tab-item {{currentTabIndex === index ? 'active' : ''}}"
+              catchtap="switchTab"
+              data-index="{{index}}">
+              <text class="tab-name">{{item.name}}</text>
+              <text class="tab-gi">GI: {{item.GI}}</text>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+      
+      <view class="modal-body">
+        <!-- 食物名称 -->
+        <view class="food-name">
+          <text>{{recognitionResult[currentTabIndex].name}}</text>
+        </view>
+
+        <!-- GI和GL指标卡片 -->
+        <view class="index-cards">
+          <view class="index-card">
+            <view class="card-title">GI值</view>
+            <view class="card-value {{recognitionResult[currentTabIndex].GI_level}}">
+              {{recognitionResult[currentTabIndex].GI}}
+            </view>
+            <view class="card-level {{recognitionResult[currentTabIndex].GI_level}}">
+              {{recognitionResult[currentTabIndex].GI_level === 'high' ? '高' : 
+                recognitionResult[currentTabIndex].GI_level === 'middle' ? '中' : '低'}}
+            </view>
+          </view>
+          <view class="index-card">
+            <view class="card-title">GL值</view>
+            <view class="card-value {{recognitionResult[currentTabIndex].GL_level}}">
+              {{recognitionResult[currentTabIndex].GL}}
+            </view>
+            <view class="card-level {{recognitionResult[currentTabIndex].GL_level}}">
+              {{recognitionResult[currentTabIndex].GL_level === 'high' ? '高' : 
+                recognitionResult[currentTabIndex].GL_level === 'middle' ? '中' : '低'}}
+            </view>
+          </view>
+        </view>
+
+        <!-- 食用建议 -->
+        <view class="suggestion-card">
+          <view class="suggestion-header">
+            <image class="suggestion-icon" src="/assets/icons/tips.png" mode="aspectFit"></image>
+            <text class="suggestion-title">食用建议</text>
+          </view>
+          <text class="suggestion-text">{{recognitionResult[currentTabIndex].suggestion}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
 </view> 

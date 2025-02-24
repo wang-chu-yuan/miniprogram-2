@@ -106,4 +106,304 @@ page {
   font-size: 28rpx;
   color: #333333;
   line-height: 1.6;
+}
+
+/* 在现有样式的末尾添加模态框样式 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.modal.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modal.show .modal-mask {
+  opacity: 1;
+}
+
+.modal-content {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 24rpx 24rpx 0 0;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.modal.show .modal-content {
+  transform: translateY(0);
+}
+
+.modal-header {
+  padding: 32rpx;
+  border-bottom: 2rpx solid #F5F5F5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background: #FFFFFF;
+  z-index: 1;
+}
+
+.modal-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.modal-close {
+  position: absolute;
+  right: 32rpx;
+  top: 32rpx;
+  width: 44rpx;
+  height: 44rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44rpx;
+  color: #999999;
+  z-index: 2;
+}
+
+.modal-body {
+  padding: 24rpx 32rpx;
+}
+
+/* 食物名称样式 */
+.food-name {
+  text-align: center;
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 32rpx;
+}
+
+/* 指标卡片样式 */
+.index-cards {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40rpx;
+  gap: 24rpx;
+}
+
+.index-card {
+  flex: 1;
+  background: #F8F8F8;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 28rpx;
+  color: #666666;
+  margin-bottom: 16rpx;
+}
+
+.card-value {
+  font-size: 48rpx;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+}
+
+.card-level {
+  font-size: 24rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+  display: inline-block;
+}
+
+/* 状态颜色 */
+.high {
+  color: #FF4D4F;
+}
+
+.middle {
+  color: #FAAD14;
+}
+
+.low {
+  color: #52C41A;
+}
+
+.card-level.high {
+  background: rgba(255, 77, 79, 0.1);
+}
+
+.card-level.middle {
+  background: rgba(250, 173, 20, 0.1);
+}
+
+.card-level.low {
+  background: rgba(82, 196, 26, 0.1);
+}
+
+/* 建议卡片样式 */
+.suggestion-card {
+  background: #F8F8F8;
+  border-radius: 16rpx;
+  padding: 24rpx;
+}
+
+.suggestion-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.suggestion-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 12rpx;
+}
+
+.suggestion-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.suggestion-text {
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.6;
+}
+
+.result-item {
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  color: #666666;
+  font-size: 28rpx;
+  min-width: 140rpx;
+}
+
+.value {
+  color: #333333;
+  font-size: 28rpx;
+  flex: 1;
+}
+
+.value.high {
+  color: #FF4D4F;
+}
+
+.value.middle {
+  color: #FAAD14;
+}
+
+.value.low {
+  color: #52C41A;
+}
+
+.suggestion {
+  margin-top: 24rpx;
+  border-top: 1rpx solid #EEEEEE;
+  padding-top: 24rpx;
+}
+
+.suggestion-text {
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.6;
+  margin-top: 12rpx;
+  display: block;
+}
+
+/* 添加标签页样式 */
+.tabs {
+  background: #FFFFFF;
+  border-bottom: 2rpx solid #F5F5F5;
+  position: sticky;
+  top: 96rpx;
+  z-index: 1;
+}
+
+.tabs-scroll {
+  white-space: nowrap;
+  width: 100%;
+}
+
+.tabs-container {
+  display: inline-flex;
+  padding: 0 16rpx;
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.tab-name {
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 4rpx;
+}
+
+.tab-gi {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.tab-item.active {
+  background: rgba(76, 175, 80, 0.1);
+}
+
+.tab-item.active .tab-name {
+  color: #4CAF50;
+  font-weight: 500;
+}
+
+.tab-item.active .tab-gi {
+  color: #4CAF50;
+}
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 24rpx;
+  right: 24rpx;
+  height: 4rpx;
+  background: #4CAF50;
+  border-radius: 2rpx;
+}
+
+/* 添加滚动条样式 */
+::-webkit-scrollbar {
+  display: none;
 } 
